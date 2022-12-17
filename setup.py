@@ -1,9 +1,9 @@
 import os
 import setuptools
-from pathlib import Path
 
-__VERSION__ = (Path(__file__).parent / ".github/scripts/__VERSION__").read_text()
-long_description = Path("README.md").read_text()
+with open( os.path.join(os.path.abspath(os.path.join(__file__, os.pardir)), ".github/scripts/__VERSION__"), "r" ) as f:
+    __VERSION__ =  f.read()
+
 
 setuptools.setup(
     name="vule-magics-python2",
@@ -11,7 +11,7 @@ setuptools.setup(
     author="Le Tuan Vu",
     author_email="ltnv24@gmail.com",
     description="Vu's custom magic commands",
-    long_description=long_description,
+    long_description="",
     long_description_content_type="text/markdown",
     packages=['vule_sparkmagic'],
     install_requires=['ipython', 'pyspark'],
