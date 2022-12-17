@@ -19,8 +19,6 @@ jobs:
 
       - name: Checkout last passing commit
         uses: actions/checkout@v3
-        with:
-          ref: python2
 
       - name: Update __VERSION__
         run: python .github/scripts/update_version.py --version ${{ github.ref }}
