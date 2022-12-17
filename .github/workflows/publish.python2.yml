@@ -1,0 +1,36 @@
+name: Build and Publish vule-magics-python2
+
+on:
+  release:
+    types: [published]
+jobs:
+  build_and_publish_stable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python 2.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 2.7
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade setuptools wheel requests
+
+      - name: Checkout last passing commit
+        uses: actions/checkout@v3
+        with:
+          ref: python2
+
+      - name: Update __VERSION__
+        run: python .github/scripts/update_version.py --version ${{ github.ref }}
+
+      - name: Build stable distribution
+        run: |
+          rm -rf dist/*
+          python setup.py sdist bdist_wheel
+
+      - name: Publish distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
