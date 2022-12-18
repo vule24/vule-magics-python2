@@ -14,7 +14,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=['vule_sparkmagic', 'scripts'],
     package_data={"scripts": ["__VERSION__"]},
-    include_package_data=True,
     install_requires=['ipython', 'pyspark'],
     classifiers=[
         "Programming Language :: Python :: 2",
