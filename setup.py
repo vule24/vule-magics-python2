@@ -1,7 +1,7 @@
 import os
 import setuptools
 
-with open( os.path.join(os.path.abspath(os.path.join(__file__, os.pardir)), ".github/scripts/__VERSION__"), "r" ) as f:
+with open( os.path.join(os.path.abspath(os.path.join(__file__, os.pardir)), "scripts/__VERSION__"), "r" ) as f:
     __VERSION__ =  f.read()
 
 
@@ -13,7 +13,7 @@ setuptools.setup(
     description="Vu's custom magic commands",
     long_description="",
     long_description_content_type="text/markdown",
-    packages=['vule_sparkmagic'],
+    packages=['vule_sparkmagic', 'scripts'],
     install_requires=['ipython', 'pyspark'],
     classifiers=[
         "Programming Language :: Python :: 2",
